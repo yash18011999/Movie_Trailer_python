@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>MLVT CINE BOX!</title>
+     <link href="https://fonts.googleapis.com/css?family=Bungee|Open+Sans" rel="stylesheet">
+     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 70px;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .movie-image{
+
+             opacity: 0.2;
+             position: absolute;
+             top: 0;
+             bottom: 0;
+             left: 0;
+             right: 0;
+        }
+ 
+        .movie-title{
+             color: #000;  
+        }
+
+           .movie-overview {
+            color: red;
+        }
+
+        .hero-font{
+             font-family: 'Bungee', cursive;
+             color: #000;
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+       
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+        .movie-tile {
+            margin-bottom: 10px;
+            padding-top: 20px;
+        }
+        .movie-tile:hover {
+            background-color: #EEE;
+            cursor: pointer;
+          
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white; 
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24">
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+          <div style="position: relative;">
+          <div class="movie-image"></div>
+          <div class="container">
+          <img src="" width="150px" style="float: left; margin: 10px;" class="movie-poster">
+          <h2 class="movie_title"></h2>
+          <p class="movie-overview"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-fixed-top navbar-dark bg-primary">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand hero-font" href="#">
+            <img src="http://www.mlvti.ac.in/images/logo.jpg" width="30" color="#000" class = "d-inline-block align-top" alt="Site logo">YVC CINE BOX</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="1J76wN0TPI4" data-toggle="modal" data-target="#trailer">
+    
+    <img src="https://m.media-amazon.com/images/M/MV5BMjI3NTM1NzMyNF5BMl5BanBnXkFtZTgwOTE4NTgzNTM@._V1_QL50_SY1000_CR0,0,719,1000_AL_.jpg" width="220" height="400">
+      
+     <div style="position: relative; bottom: 0; width: 100%; padding: 10px; color: #000; text-shadow: 2px 2px 0 #000;">
+ 
+   <h2>Sanju</h2></div>
+  <p>Sanju is a biopic of the controversial life of actor Sanjay Dutt</p>
+
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="X_5_BLt76c0" data-toggle="modal" data-target="#trailer">
+    
+    <img src="https://m.media-amazon.com/images/M/MV5BOWZjMjkwM2QtZTJiMy00MmI5LWI2YjEtMmY5NjNiYTE2NTBiXkEyXkFqcGdeQXVyNjQ2MjQ5NzM@._V1_QL50_SY1000_CR0,0,692,1000_AL_.jpg" width="220" height="400">
+      
+     <div style="position: relative; bottom: 0; width: 100%; padding: 10px; color: #000; text-shadow: 2px 2px 0 #000;">
+ 
+   <h2>Padmavat</h2></div>
+  <p>Story of Rani Padmavati Queen of Chittorgarh.</p>
+
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="xBht9TG7ySw" data-toggle="modal" data-target="#trailer">
+    
+    <img src="https://m.media-amazon.com/images/M/MV5BMzQ4ZTc5ZTItYWRhNi00YTJjLWI4NGMtNjA0ODQ1ZDQxNzkyXkEyXkFqcGdeQXVyNjc4NjAxMzM@._V1_QL50_SY1000_SX750_AL_.jpg" width="220" height="400">
+      
+     <div style="position: relative; bottom: 0; width: 100%; padding: 10px; color: #000; text-shadow: 2px 2px 0 #000;">
+ 
+   <h2>Race 3</h2></div>
+  <p>Race 3 is a 2018 Indian action thriller film directed by Remo D'Souza and produced under Tips Films and Salman Khan Films.</p>
+
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="yRUAzGQ3nSY" data-toggle="modal" data-target="#trailer">
+    
+    <img src="https://upload.wikimedia.org/wikipedia/en/0/0a/Inside_Out_%282015_film%29_poster.jpg" width="220" height="400">
+      
+     <div style="position: relative; bottom: 0; width: 100%; padding: 10px; color: #000; text-shadow: 2px 2px 0 #000;">
+ 
+   <h2>Inside Out</h2></div>
+  <p>Animated film set in the mind of an adolescent girl</p>
+
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="hEJnMQG9ev8" data-toggle="modal" data-target="#trailer">
+    
+    <img src="https://upload.wikimedia.org/wikipedia/en/6/6e/Mad_Max_Fury_Road.jpg" width="220" height="400">
+      
+     <div style="position: relative; bottom: 0; width: 100%; padding: 10px; color: #000; text-shadow: 2px 2px 0 #000;">
+ 
+   <h2>Mad Max: Fury Road</h2></div>
+  <p>The fourth Mad Max film</p>
+
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="lB95KLmpLR4" data-toggle="modal" data-target="#trailer">
+    
+    <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Social_network_film_poster.jpg" width="220" height="400">
+      
+     <div style="position: relative; bottom: 0; width: 100%; padding: 10px; color: #000; text-shadow: 2px 2px 0 #000;">
+ 
+   <h2>Social Network</h2></div>
+  <p>Story of making of the Facebook.</p>
+
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="x_7YlGv9u1g" data-toggle="modal" data-target="#trailer">
+    
+    <img src="https://m.media-amazon.com/images/M/MV5BMTQ4MzQzMzM2Nl5BMl5BanBnXkFtZTgwMTQ1NzU3MDI@._V1_QL50_SY1000_CR0,0,713,1000_AL_.jpg" width="220" height="400">
+      
+     <div style="position: relative; bottom: 0; width: 100%; padding: 10px; color: #000; text-shadow: 2px 2px 0 #000;">
+ 
+   <h2>Dangal</h2></div>
+  <p>Former wrestler Mahavir Singh Phogat and his two wrestler daughters struggle towards glory at the Commonwealth Games in the face of societal oppression.</p>
+
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="r8kE7rSzfQs" data-toggle="modal" data-target="#trailer">
+    
+    <img src="https://m.media-amazon.com/images/M/MV5BMTg5MzUxNzgxNV5BMl5BanBnXkFtZTgwMTM2NzQ3MjI@._V1_QL50_SY1000_CR0,0,685,1000_AL_.jpg" width="220" height="400">
+      
+     <div style="position: relative; bottom: 0; width: 100%; padding: 10px; color: #000; text-shadow: 2px 2px 0 #000;">
+ 
+   <h2>Boss Baby</h2></div>
+  <p>A suit-wearing, briefcase-carrying baby pairs up with his 7-year old brother to stop the dastardly plot of the CEO of Puppy Co.</p>
+
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="wb49-oV0F78" data-toggle="modal" data-target="#trailer">
+    
+    <img src="https://m.media-amazon.com/images/M/MV5BMTk3NDY5MTU0NV5BMl5BanBnXkFtZTgwNDI3MDE1NTM@._V1_QL50_SY1000_CR0,0,679,1000_AL_.jpg" width="220" height="400">
+      
+     <div style="position: relative; bottom: 0; width: 100%; padding: 10px; color: #000; text-shadow: 2px 2px 0 #000;">
+ 
+   <h2>Mission:Impossible-Fallout</h2></div>
+  <p>Ethan Hunt and his IMF team, along with some familiar allies, race against time after a mission gone wrong.</p>
+
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="6ZfuNTqbHE8" data-toggle="modal" data-target="#trailer">
+    
+    <img src="https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_QL50_SY1000_CR0,0,674,1000_AL_.jpg" width="220" height="400">
+      
+     <div style="position: relative; bottom: 0; width: 100%; padding: 10px; color: #000; text-shadow: 2px 2px 0 #000;">
+ 
+   <h2>Avengers: Infinity War</h2></div>
+  <p>The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe.</p>
+
+</div>
+
+    </div>
+  </body>
+</html>
